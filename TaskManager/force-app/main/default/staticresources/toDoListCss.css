@@ -1,0 +1,11 @@
+[data-priority='High']{
+    background: red;
+}
+
+[data-priority='Normal']{
+    background: rgb(228, 228, 20);
+}
+
+[data-priority='Low']{
+    background: yellowgreen;
+}

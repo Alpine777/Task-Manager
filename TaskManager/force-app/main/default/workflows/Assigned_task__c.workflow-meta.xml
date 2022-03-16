@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Alert_when_task_is_approved</fullName>
+        <ccEmails>tdkrbigya2@gmail.com</ccEmails>
+        <description>Alert when task is approved.</description>
+        <protected>false</protected>
+        <recipients>
+            <field>User__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Task_Approved_Email</template>
+    </alerts>
+    <alerts>
+        <fullName>Alert_when_task_is_rejected</fullName>
+        <ccEmails>tdkrbigya2@gmail.com</ccEmails>
+        <description>Alert when task is rejected</description>
+        <protected>false</protected>
+        <recipients>
+            <field>User__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Task_Approval_Rejected</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Reset_approval_status</fullName>
+        <field>Approval_status__c</field>
+        <literalValue>Unapproved</literalValue>
+        <name>Reset approval status</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Task_Approved</fullName>
+        <field>Approval_status__c</field>
+        <literalValue>Approved</literalValue>
+        <name>Task Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>To_be_corrected</fullName>
+        <field>Task_status__c</field>
+        <literalValue>To Be Corrected</literalValue>
+        <name>To be corrected</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+</Workflow>

@@ -1,0 +1,72 @@
+<!-- sldsValidatorIgnore -->
+<template>
+<div style="width:80%;">
+<lightning-card title="ToDo List" >
+<lightning-button-menu 
+alternative-text="Sort" 
+label="Sort by"
+slot="actions"
+onselect={handleOnselect}> 
+<lightning-menu-item label="Name" value="Name" icon-name="utility:sort" >
+</lightning-menu-item>
+<lightning-menu-item label="Priority" value="Priority__c" icon-name="utility:sort"> </lightning-menu-item>
+</lightning-button-menu>
+<lightning-button-icon
+slot="actions"
+icon-name="utility:sync"
+alternative-text="Refresh"
+title="Refresh"
+onclick= "{Refresh}"
+>
+</lightning-button-icon>
+<div class="slds-scrollable_y" style="height:12rem;width:100%">
+<lightning-layout > 
+<lightning-layout-item padding="around-small" size="12">
+<ul class="slds-has-dividers_around-space">
+<template if:true={hasTodos}>
+<template for:each={todoTasks} for:item="task">
+<li class="slds-item" data-priority={task.Priority__c} key={task.Id}>
+<lightning-layout  
+vertical-align="center"
+horizontal-align="spread"
+
+>
+<lightning-layout-item padding="horizontal-small">
+    <p><a href="#" class="linkcolor" onclick= "{handleClick}" name= {task.Id}>{task.Name}</a></p>
+</lightning-layout-item>
+<lightning-layout  
+vertical-align="center"
+
+>
+<lightning-layout-item padding="horizontal-small">
+    <lightning-button-icon
+        icon-name="utility:delete"
+        alternative-text="Delete"
+        title="Delete"
+        name={task.Id}
+        onclick={deleteTask}
+    ></lightning-button-icon>
+</lightning-layout-item>
+</lightning-layout>
+</lightning-layout>
+</li>
+</template>
+</template>
+</ul>
+</lightning-layout-item>
+</lightning-layout>
+</div>
+<p slot="footer">
+<lightning-layout horizontal-align="center">
+<lightning-layout-item>
+<lightning-button
+variant="brand"
+label="Add"
+onclick= {addTask}>
+</lightning-button>
+</lightning-layout-item>
+</lightning-layout>
+</p>
+</lightning-card>
+</div>
+</template>

@@ -1,0 +1,23 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId"  controller="MembersCardController">
+    <aura:handler name="init" value="{!this }" action="{!c.init }"/>
+    <aura:attribute name="Supervisor" type="Object[]"/>
+    <aura:attribute name="recordId" type="String" />
+    <lightning:layout horizontalAlign="center">
+        <lightning:layoutItem  size="4"  padding="around-small" class="slds-col" > 
+            <aura:iteration items="{!v.Supervisor}" var="Supervisor">
+                <lightning:card class="slds-card_boundary">
+                    <lightning:layout verticalAlign="center" horizontalAlign="center">
+                        <lightning:layoutItem>
+                            <lightning:avatar src="{!$Resource.Avatar+'/images/'+ Supervisor.Username +'.png'}" class= "slds-card_boundary"></lightning:avatar>   
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                    <lightning:layout horizontalAlign="center" >  
+                        <lightning:layoutItem padding="around-small">
+                            {!Supervisor.Name}
+                        </lightning:layoutItem>  
+                    </lightning:layout>
+                </lightning:card>
+            </aura:iteration>
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

@@ -1,0 +1,48 @@
+<!-- sldsValidatorIgnore -->
+<template>
+<lightning-card title="Urgent task List" style="width: 100%;">
+<lightning-button-menu 
+alternative-text="Sort" 
+label="Sort by"
+slot="actions"
+onselect={handleOnselect}> 
+<lightning-menu-item label="Name" value="Name" icon-name="utility:sort" >
+</lightning-menu-item>
+</lightning-button-menu>
+<!--lightning-button-icon
+slot="actions"
+icon-name="utility:sync"
+alternative-text="Refresh"
+title="Refresh"
+onclick= "{RefreshU}"
+>
+</lightning-button-icon-->
+<div class="slds-scrollable_y" style="height:12rem;width:100%">
+<lightning-layout>
+<lightning-layout-item padding="around-small" size="12">
+<ul class="slds-has-dividers_around-space">
+        <template for:each={urgentTasks} for:item="urgentTask">
+            <li class="slds-item color" key={urgentTask.Id}>
+                <lightning-layout  
+                    vertical-align="center"
+                    horizontal-align="spread"
+                >
+                    <lightning-layout-item  padding="horizontal-small">
+                        <p><a href="#" class="linkcolor" onclick= "{handleClick}" name= {urgentTask.Id}>{urgentTask.Name}</a></p>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </li>
+        </template>
+</ul>
+</lightning-layout-item>
+</lightning-layout>
+</div>
+<p slot="footer">
+<lightning-layout horizontal-align="center">
+<lightning-layout-item padding="horizontal-small">
+<a onclick= "{Reroute}">View All Tasks</a>
+</lightning-layout-item>
+</lightning-layout>
+</p>
+</lightning-card>
+</template>

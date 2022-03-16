@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Validate_date</fullName>
+    <active>true</active>
+    <errorConditionFormula>Total_Project_Days__c    &lt;= 0</errorConditionFormula>
+    <errorMessage>End date must exceed start date by at least one day.</errorMessage>
+</ValidationRule>

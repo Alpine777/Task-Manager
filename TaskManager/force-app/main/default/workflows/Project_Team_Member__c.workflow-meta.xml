@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Alert_member_when_added</fullName>
+        <ccEmails>tdkrbigya2@gmail.com</ccEmails>
+        <description>Alert member when added.</description>
+        <protected>false</protected>
+        <recipients>
+            <field>User__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Notify_member</template>
+    </alerts>
+    <rules>
+        <fullName>Notify member</fullName>
+        <actions>
+            <name>Alert_member_when_added</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <formula>NOT( ISNULL( User__c ) )</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+</Workflow>
