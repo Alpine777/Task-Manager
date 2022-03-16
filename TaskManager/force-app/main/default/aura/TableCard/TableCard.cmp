@@ -1,0 +1,25 @@
+<aura:component implements= "flexipage:availableForAllPageTypes,force:hasRecordId" >
+    <aura:attribute name="mydata" type="Object"/>
+    <aura:attribute name="mycolumns" type="List"/>
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="sortedBy" type="String" default="Name"/>
+    <aura:attribute name="sortedDirection" type="string" default="asc" />
+     <aura:attribute name="newTask" type="Assigned_task__c"/>
+    <aura:attribute name='user' type="String"/>
+    <aura:attribute name='project' type="String"/>
+   
+    
+    <lightning:card title= 'Assigned Tasks' class="color slds-card_boundary" >
+        <aura:set attribute="actions">
+            <lightning:overlayLibrary aura:id="overlayLib"/>
+            <lightning:buttonIcon iconName="utility:sync" onclick="{!c.Refresh}"  alternativeText="Refresh" title="Refresh"/>
+            <lightning:button label="New" onclick="{!c.openForm}"  class="slds-m-around_x-small"/>
+        </aura:set> 
+       <div class="slds-scrollable_y" style="height:12rem;width:100%">
+       <div class="slds-border_top">
+        <c:Task_table mydata="{!v.mydata}" mycolumns="{!v.mycolumns}" recordId="{!v.recordId}"
+                      sortedBy="{!v.sortedBy}" sortedDirection="{!v.sortedDirection}" aura:id="childCmp"/>
+        </div>
+       </div>
+    </lightning:card> 
+</aura:component>

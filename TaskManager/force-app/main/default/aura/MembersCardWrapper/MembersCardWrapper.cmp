@@ -1,0 +1,23 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId">
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="userValueWrapper" type="List[]"/>
+    <aura:attribute name="Supervisor" type="Object[]"/>
+    <lightning:layout>
+        <lightning:layoutItem  size="12" class="slds-col"> 
+            <lightning:card title="Team" class="slds-card_boundary">
+                <aura:set attribute="actions">
+                    <div class="slds-var-m-around_xx-small">
+                        <lightning:buttonMenu label="Sort By" alternativeText="Sort" onselect="{!c.handleSelect }">
+                            <lightning:menuItem value="Name" label="Name" iconName="utility:sort" />
+                            <lightning:menuItem value="Progression" label="Progression" iconName="utility:sort"/>
+                        </lightning:buttonMenu>
+                    </div>
+                </aura:set>
+                <h3 class="slds-section-title--divider" padding="slds-around_small">Supervisor</h3>
+                <c:SupervisorCard recordId='{!v.recordId}' Supervisor='{!v.Supervisor}' />
+                <h3 class="slds-section-title--divider" padding="slds-around_small">Project Members</h3>
+                <c:MembersCard recordId='{!v.recordId}' userValueWrapper='{!v.userValueWrapper}' aura:id="childCmp"/>
+            </lightning:card>
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

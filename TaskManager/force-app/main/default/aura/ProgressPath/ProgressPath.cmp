@@ -1,0 +1,15 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" controller="ProgressPathController" access="global" >
+        <aura:attribute name="recordId" type="String"/>
+    	<aura:attribute name="data" type="String"/>
+        <aura:attribute name="steps" type="List"/>
+       
+        <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+        
+    	<div class="slds-box color">
+        <lightning:progressIndicator currentStep="{!v.data}" type="path" variant="base">
+            <aura:iteration items="{! v.steps }" var="step">
+                <lightning:progressStep label="{!step.label}" value="{!step.value}"/>
+            </aura:iteration>
+        </lightning:progressIndicator>
+    </div>
+</aura:component>

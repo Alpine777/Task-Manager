@@ -1,0 +1,18 @@
+.THIS .Completed{
+    background-color: yellowgreen;
+}
+
+.THIS .In-Progress{
+    background-color: yellow;
+    
+}
+
+.THIS .Not-Started{
+    background-color: lightgrey;
+    
+}
+
+.THIS .Delayed{
+    background-color: grey;
+    
+}

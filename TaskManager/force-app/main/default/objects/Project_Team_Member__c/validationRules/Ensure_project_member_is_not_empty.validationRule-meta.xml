@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ensure_project_member_is_not_empty</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISBLANK( User__c )</errorConditionFormula>
+    <errorMessage>User is required to create a team.</errorMessage>
+</ValidationRule>

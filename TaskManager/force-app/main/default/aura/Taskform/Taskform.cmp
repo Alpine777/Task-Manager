@@ -1,0 +1,21 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+    <aura:attribute name='user' type="String"/>
+    <aura:attribute name='project' type="String"/>
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    <lightning:recordEditform objectApiName= "Assigned_task__c" onsuccess="{!c.handleShowToast}">
+        <lightning:messages/>
+        <lightning:inputField fieldName= 'Name' required='true' aura:id="field"/>
+        <lightning:inputField fieldName='User__c'  aura:id="field" value="{!v.user}" required='true'/>
+        <lightning:inputField fieldName='Project__c'  aura:id="field" value="{!v.project}"/>
+        <lightning:inputField fieldName= 'Priority__c'  aura:id="field" required='true'/>
+        <lightning:inputField fieldName= 'Task_status__c'  aura:id="field" required='true'/>
+        <lightning:inputField fieldName= 'Approval_status__c'  aura:id="field" default='Unapproved'/>
+        <footer class="slds-modal__footer">
+            
+            <lightning:button class="slds-m-top_small" type="submit"  variant="Brand" label="Save" />
+            <lightning:button class="slds-m-top_small slds-m-left_xx-large" type="submit"  variant="Brand"  label="Cancel" onclick="{!c.handleCancel}"/>
+        </footer>
+    </lightning:recordEditform> 
+    
+</aura:component>
