@@ -4,17 +4,19 @@ import {loadStyle} from 'lightning/platformResourceLoader';
 import toDoListCss from '@salesforce/resourceUrl/toDoListCss';
 import getTasks from '@salesforce/apex/getTaskController.getTasks';
 import deletePersonalTask from '@salesforce/apex/getTaskController.deletePersonalTask';
+import { publish, MessageContext } from 'lightning/messageService';
+import recordSelected from '@salesforce/messageChannel/projectMessageChannel__c';
 import {refreshApex} from '@salesforce/apex';
 export default class TodoList extends NavigationMixin(LightningElement) {
 renderedCallback() {
 
 Promise.all([
-    loadStyle( this, toDoListCss )
-    ]).then(() => {
-        console.log( 'Files loaded' );
-    })
-    .catch(error => {
-        console.log( error.body.message );
+loadStyle( this, toDoListCss )
+]).then(() => {
+    console.log( 'Files loaded' );
+})
+.catch(error => {
+    console.log( error.body.message );
 });
 
 }
@@ -23,9 +25,9 @@ Promise.all([
 @track todoTasks=[];
 @track priorities = 
 {
-    'High' : 0, 
-    'Normal' : 1,
-    'Low' : 2,
+'High' : 0, 
+'Normal' : 1,
+'Low' : 2,
 }
 
 /**
@@ -48,6 +50,9 @@ this.Response= response;
 console.log(response.error);
 }
 }
+
+@wire(MessageContext)
+messageContext;
 
 deleteTask(event){
 //let todoTasks= this.todoTasks;
@@ -101,16 +106,19 @@ refreshApex(this.Response);
 }
 
 handleClick(event){
-let id = event.target.name; 
+const payload = { recordId: event.target.contact.Id };
+
+publish(this.messageContext, recordSelected, payload);
+/*let id = event.target.name; 
 console.log(id);
-    this[NavigationMixin.Navigate]({
-        type: 'standard__recordPage',
-        attributes: {
-            recordId: id,
-            objectApiName: 'Personal_Task__c', // objectApiName is optional
-            actionName: 'view'
-        }
-    });
+this[NavigationMixin.Navigate]({
+    type: 'standard__recordPage',
+    attributes: {
+        recordId: id,
+        objectApiName: 'Personal_Task__c', // objectApiName is optional
+        actionName: 'view'
+    }
+});*/
 
 }
 

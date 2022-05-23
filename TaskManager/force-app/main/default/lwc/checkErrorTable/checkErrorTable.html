@@ -1,0 +1,14 @@
+<template>
+    <template if:true={hasProject}>
+        <lightning-datatable
+            data= "{projects}"
+            columns= "{columns}"
+            key-field= "Id"
+            onrowselection= "{handleSelect}"
+            >
+        </lightning-datatable>
+        </template>
+        <template if:true={error}>
+        {error}
+        </template>
+    </template>

@@ -1,0 +1,50 @@
+<!-- sldsValidatorIgnore -->
+<template>
+<template if:true={hasProject}>
+    <lightning-datatable
+        data= "{projects}"
+        columns= "{columns}"
+        key-field= "Id"
+        onrowselection= "{handleSelect}"
+        >
+    </lightning-datatable>
+    </template>
+    <template if:true={error}>
+    {error}
+    </template>
+</template>
+
+<!-- <template>
+    <lightning-card title="Project" icon-name="standard:account">
+        <div if:true={errorMsg} style="margin-left: 3%;">
+            <p style="color: red;">{errorMsg}</p>
+        </div>
+        <lightning-layout  multiple-rows="true" vertical-align= "end">
+            <lightning-layout-item size="9" padding="around-small" >
+                    <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                                    <lightning-input type="text" 
+                                                        placeholder= "Project Name" 
+                                                        onchange= "{handleProjectName}" ></lightning-input>
+                            </div>
+                        </div> 
+            </lightning-layout-item>
+            <lightning-layout-item size="3" padding="around-small" >
+                    <lightning-button label="Filter" 
+                                        variant="brand" 
+                                        onclick= "{handleFilter}" ></lightning-button>
+                </lightning-layout-item>
+            </lightning-layout><br/>
+    
+    <lightning-layout>
+        <lightning-layout-item padding="around-small">
+            <lightning-datatable data= "{projects}"
+                                    columns= "{columns}"
+                                    key-field="id"
+                                    onrowselection= "{handleSelect}"
+                                    ></lightning-datatable>
+            </lightning-layout-item>
+          </lightning-layout>
+          
+    </lightning-card>
+</template> -->
